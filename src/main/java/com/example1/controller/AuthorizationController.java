@@ -26,11 +26,13 @@ public class AuthorizationController {
 
     @ExceptionHandler(InvalidCredentials.class)
     public ResponseEntity<String> handleInvalidCredentials (InvalidCredentials e) {
+        System.out.println("Exception: " + e.getMessage());
         return new ResponseEntity<>( "Exception: " + e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(UnauthorizedUser.class)
     public ResponseEntity<String> handleUnauthorizedUser (UnauthorizedUser e) {
-        return new ResponseEntity<String> ("Exception: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+        System.out.println("Exception: " + e.getMessage());
+        return new ResponseEntity<String> ("Exception: " + e.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 }
